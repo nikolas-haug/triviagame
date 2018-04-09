@@ -38,12 +38,12 @@ var timer;
 var gameOver = false;
 
 //function to start the game
-function startTimer() {
-    var timer = setInterval(function() {
-        $('#timer').text(timeLeft);
-        timeLeft--;
-    }, 1000);
-};
+// function startTimer() {
+//     var timer = setInterval(function() {
+//         $('#timer').text(timeLeft);
+//         timeLeft--;
+//     }, 1000);
+// };
 
 //function for the question timer
 // function gameTimer() {
@@ -51,6 +51,12 @@ function startTimer() {
 //         timeLeft--;
 //     }, 1000);
 // }
+
+//function to call for the timer
+function startTimer() {
+    $('#timer').text(timeLeft);
+    timeLeft--;
+};
 
 //function to generate the questions and possible answers
 // TO DO randomize the selection of questions - put them into one object
@@ -60,8 +66,8 @@ function makeQuestion() {
         var newAnswers = $("<li data-choice=" + i + ">");
         newAnswers.append(questions[questionCounter].answers[i]);
         $('#answers').append(newAnswers);
-    } 
-    startTimer();
+    }
+    timer = setInterval(startTimer, 1000);
     makeGuess(); 
 };
 
