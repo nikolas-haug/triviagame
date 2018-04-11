@@ -5,12 +5,14 @@ $('document').ready(function() {
 var newQuestion1 = {
     question: "who?",
     answers: ["this", "that", "then", "there"],
-    correctIndex: 0
+    correctIndex: 0,
+    image: "assets/images/whale-hello-there.gif"
 }
 var newQuestion2 = {
     question: "what?",
     answers: ["this", "that", "then", "there"],
-    correctIndex: 1
+    correctIndex: 1,
+    image: "assets/images/halo-beluga-whale.gif"
 }
 var newQuestion3 = {
     question: "where?",
@@ -65,6 +67,8 @@ function makeQuestion() {
     $('#timer, .game-main, #answer-info').show();
     $('#start-btn').hide();
     $('#img-row').hide();
+    //remove img attribute
+    $('img').removeAttr('src');
     $('#guess-text, #correct-answer').text("");
     $('#main-start').show();
     $('#question').text(questions[questionCounter].question);
@@ -99,18 +103,14 @@ function makeQuestion() {
 
 //function to display right or wrong anwer and image
 function evaluateGuess() {
-    //if statement to evaluate if correct or incorrect
-    
-    console.log("it works!");
-
     $('.game-main').hide();
-
     $('#img-row').show();
-
     $('#timer').empty().hide();
 
-
-    // $('#timer').empty().text("time's up!");
+    // var answerImg = $('<img>');
+    $('img').attr('src', questions[questionCounter].image);
+    console.log(questions[questionCounter].image);
+    // $('#answer-img').append(answerImg);
 
     setTimeout(makeQuestion, 3000);
     
@@ -121,11 +121,9 @@ function evaluateGuess() {
 
 //function to call when timer runs out
 function outOfTime() {
-
     $('#correct-answer').show().text(questions[questionCounter].answers[questions[questionCounter].correctIndex]);
-
+    $('img').attr('src', questions[questionCounter].image);
     $('.game-main').hide();
-
     $('#timer').empty().hide();
     $('#guess-text').text("time's up!");
     $('#question, #answers').empty();
@@ -138,22 +136,5 @@ function outOfTime() {
 
 // makeQuestion();
 startGame();
-
-
-// $('#question').text(firstQuestion.question);
-
-// var newAnswer = $('<li>');
-
-// newAnswer.append(firstQuestion.answers.one.answer1);
-
-// $('#answers').append(newAnswer);
-
-
-
-
-
-
-
-
 
 });
