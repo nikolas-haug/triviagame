@@ -1,6 +1,7 @@
 $('document').ready(function() {
 
 //question objects
+// TO DO change 'correctIndex' to 'isCorrect' with a boolean value
 var newQuestion1 = {
     question: "who?",
     answers: ["this", "that", "then", "there"],
@@ -29,7 +30,7 @@ var questions = [newQuestion1, newQuestion2, newQuestion3, newQuestion4];
 var questionCounter = 0;
 
 //variable for the timer
-var timeLeft = 30;
+var timeLeft = 10;
 
 //variable for the set timer interval
 var timer;
@@ -37,37 +38,33 @@ var timer;
 //variable to track the status of the game
 var gameOver = false;
 
-//function to start the game
-// function startTimer() {
-//     var timer = setInterval(function() {
-//         $('#timer').text(timeLeft);
-//         timeLeft--;
-//     }, 1000);
-// };
-
-//function for the question timer
-// function gameTimer() {
-//     var timer = setInterval(function() {
-//         timeLeft--;
-//     }, 1000);
-// }
-
 //function to initialize the game on page load
 function startGame() {
     $('#main-start').hide();
+    $('#img-row').hide();
     $('#start-btn').show().on('click', makeQuestion);
 }
 
 //function to call for the timer
 function startTimer() {
+    //add checktimer
+    if(timeLeft === 0) {
+        console.log("time's up!");
+        clearInterval(timer);
+        // evaluateGuess();
+        outOfTime();
+    }
     $('#timer').text(timeLeft);
     timeLeft--;
 };
 
 //function to generate the questions and possible answers - START GAME
-// TO DO randomize the selection of questions - put them into one object
+// TO DO randomize the selection of questions - put them into one array
 function makeQuestion() {
+    $('#timer').show();
     $('#start-btn').hide();
+    $('#img-row').hide();
+    $('#guess-text').text("");
     $('#main-start').show();
     $('#question').text(questions[questionCounter].question);
     for(var i = 0; i < questions[questionCounter].answers.length; i++) {
@@ -77,36 +74,58 @@ function makeQuestion() {
         $('#answers').append(newAnswers);
     }
     timer = setInterval(startTimer, 1000);
-    makeGuess(); 
 };
 
-//function for making a guess from the four choices
-function makeGuess() {
+    //event listenr added onced (bound) to the dynamically generated DOM elements
     $('#answers').on('click', 'li', function() {
         var guess = ($(this).data('choice'));
         console.log(guess);
         if(guess === questions[questionCounter].correctIndex) {
             console.log("correct!");
+            $('#answer-status').text("Correct answer!");
             clearInterval(timer);
             evaluateGuess();
         } else {
             console.log("wrong!");
+            $('#answer-status').text("Wrong answer!");
+            $('#correct-answer').show().text(questions[questionCounter].answers[questions[questionCounter].correctIndex]);
             clearInterval(timer);
+            evaluateGuess();
         }
     });
-};
+
 
 //function to display right or wrong anwer and image
 function evaluateGuess() {
     //if statement to evaluate if correct or incorrect
+    
     console.log("it works!");
 
-    setTimeout(makeQuestion, 5000);
-    $('#timer').text("");
+    $('#img-row').show();
+
+    $('#timer').empty().hide();
+
+
+    // $('#timer').empty().text("time's up!");
+
+    setTimeout(makeQuestion, 3000);
+    
     $('#question, #answers').empty();
     questionCounter++;
-    timeLeft = 30;
+    timeLeft = 10;
 };
+
+//function to call when timer runs out
+function outOfTime() {
+    $('#timer').empty().hide();
+    $('#guess-text').text("time's up!");
+    $('#question, #answers').empty();
+    // TO DO - display the question object's image
+    $('#img-row').show();
+    questionCounter++;
+    timeLeft = 10;
+    setTimeout(makeQuestion, 3000);
+}
 
 // makeQuestion();
 startGame();
