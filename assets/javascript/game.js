@@ -42,7 +42,7 @@ var gameOver = false;
 
 //function to initialize the game on page load
 function startGame() {
-    $('.game-main').hide();
+    $('.game-main, #retry-btn').hide();
     $('#main-start').hide();
     $('#img-row').hide();
     $('#start-btn').show().on('click', makeQuestion);
@@ -64,21 +64,29 @@ function startTimer() {
 //function to generate the questions and possible answers - START GAME
 // TO DO randomize the selection of questions - put them into one array
 function makeQuestion() {
-    $('#timer, .game-main, #answer-info').show();
-    $('#start-btn').hide();
-    $('#img-row').hide();
-    //remove img attribute
-    $('img').removeAttr('src');
-    $('#guess-text, #correct-answer').text("");
-    $('#main-start').show();
-    $('#question').text(questions[questionCounter].question);
-    for(var i = 0; i < questions[questionCounter].answers.length; i++) {
-        var newAnswers = $("<li data-choice=" + i + ">");
-        newAnswers.append(questions[questionCounter].answers[i]);
-        console.log(newAnswers);
-        $('#answers').append(newAnswers);
-    }
-    timer = setInterval(startTimer, 1000);
+    //call function to adjust status of the game
+    gameStatus();
+    //check the status of the game
+    if(gameOver === false) {
+
+        $('#timer, .game-main, #answer-info').show();
+        $('#start-btn, #retry-btn').hide();
+        $('#img-row').hide();
+        //remove img attribute
+        $('img').removeAttr('src');
+        $('#guess-text, #correct-answer').text("");
+        $('#main-start').show();
+        $('#question').text(questions[questionCounter].question);
+        for(var i = 0; i < questions[questionCounter].answers.length; i++) {
+            var newAnswers = $("<li data-choice=" + i + ">");
+            newAnswers.append(questions[questionCounter].answers[i]);
+            console.log(newAnswers);
+            $('#answers').append(newAnswers);
+        }
+        timer = setInterval(startTimer, 1000);
+    } else {
+        endGame();
+    } 
 };
 
     //event listenr added onced (bound) to the dynamically generated DOM elements
@@ -132,6 +140,24 @@ function outOfTime() {
     questionCounter++;
     timeLeft = 10;
     setTimeout(makeQuestion, 3000);
+}
+
+//function to check game status
+function gameStatus() {
+    if(questionCounter === questions.length) {
+        gameOver = true;
+    }
+}
+
+//function for end of game
+function endGame() {
+    questionCounter = 0;
+    gameOver = false;
+    $('.game-main').hide();
+    $('#main-start').hide();
+    $('#img-row').hide();
+    $('#guess-text').text("");
+    $('#retry-btn').show().on('click', makeQuestion);
 }
 
 // makeQuestion();
