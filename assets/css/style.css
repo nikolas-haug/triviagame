@@ -1,3 +1,10 @@
+/* custom css for trivia game */
+
+/* Whale by Dolly Holmes from the Noun Project */
+
+/* =============================================== */
+/* MAIN  */
+/* =============================================== */
 
 html, body {
     height: 100%;
@@ -17,7 +24,60 @@ body {
     height: 100%;
 }
 
+.jumbotron {
+    background-color: #e9ecef80;
+}
 
+/* =============================================== */
+/* TYPOGRAPHY  */
+/* =============================================== */
+
+h1, h3 {
+    font-family: 'Russo One', sans-serif;
+    letter-spacing: 1.4px;
+}
+
+h4, h5, p, li, span {
+    font-family: 'Roboto Slab', serif;
+    letter-spacing: 0.8px;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h4, h5, li {
+    font-size: 19px;
+}
+
+p, span {
+    font-size: 17px;
+}
+
+span {
+    font-weight: 700;
+}
+
+/* =================================================== */
+/* BUTTONS */
+/* =================================================== */
+
+button {
+    padding: 14px;
+    font-family: 'Roboto Slab', serif;
+    letter-spacing: 0.8px;
+    background-color: #fff;
+}
+
+button:hover {
+    background-color: rgba(0,223,201, 0.6);
+    border: 2px solid gold;
+    transition: all 0.7s;
+}
+
+/* =================================================== */
+/* ANSWERS - LIST STYLES */
+/* =================================================== */
 
 li {
     list-style: none;
@@ -26,9 +86,9 @@ li {
 }
 
 li:hover {
-    background-color: orange;
+    background-color: rgba(255, 217, 0, 0.76);
     border-width: 3px;
-    border-color: blue;
+    border-color: rgba(0,223,201, 0.6);
 }
 
 ul, li {

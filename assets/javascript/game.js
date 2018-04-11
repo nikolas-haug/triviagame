@@ -3,7 +3,7 @@ $('document').ready(function() {
 //question objects
 // TO DO change 'correctIndex' to 'isCorrect' with a boolean value
 var newQuestion1 = {
-    question: "who?",
+    question: "What is the largest living whale in the ocean?",
     answers: ["this", "that", "then", "there"],
     correctIndex: 0,
     image: "assets/images/whale-hello-there.gif"

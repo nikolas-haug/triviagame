@@ -7,6 +7,8 @@
     <title>Trivia!</title>
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,700|Russo+One" rel="stylesheet">
     <!-- custom css -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- jquery -->
@@ -24,21 +26,21 @@
         
         <div class="row text-center jumbotron mt-5 mb-1 p-3">
             <div class="col-md-12">
-                <h1>Whale Trivia!</h1>
+                <h1 class="p-1">Whale Trivia!</h1>
                 
                 <button id="start-btn">Cick to Start!</button>
                 <button id="retry-btn">Click to retry!</button>
             </div>
         </div>
 
-        <div class="row text-center mt-3">
+        <div class="row text-center mt-5">
             <div class="col-md-12">
                 <h4 id="status-text"></h4>
             </div>
 
             <div class="col-md-12">
                 <div id="results">
-                    <h4>Results: </h4>
+                    <h4><strong>Results: </strong></h4>
                     <p id="right"></p>
                     <p id="wrong"></p>
                     <p id="unanswered"></p>
