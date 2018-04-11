@@ -175,7 +175,7 @@ function endGame() {
     $('#main-start').hide();
     $('#img-row').hide();
     $('#status-text').text("");
-    $('#retry-btn').show().click(makeQuestion);
+    $('#retry-btn').show().off().on('click', makeQuestion);
     
     questionCounter = 0;
     correctAnswers = 0;
