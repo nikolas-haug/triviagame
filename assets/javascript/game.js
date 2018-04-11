@@ -40,6 +40,7 @@ var gameOver = false;
 
 //function to initialize the game on page load
 function startGame() {
+    $('.game-main').hide();
     $('#main-start').hide();
     $('#img-row').hide();
     $('#start-btn').show().on('click', makeQuestion);
@@ -61,10 +62,10 @@ function startTimer() {
 //function to generate the questions and possible answers - START GAME
 // TO DO randomize the selection of questions - put them into one array
 function makeQuestion() {
-    $('#timer').show();
+    $('#timer, .game-main, #answer-info').show();
     $('#start-btn').hide();
     $('#img-row').hide();
-    $('#guess-text').text("");
+    $('#guess-text, #correct-answer').text("");
     $('#main-start').show();
     $('#question').text(questions[questionCounter].question);
     for(var i = 0; i < questions[questionCounter].answers.length; i++) {
@@ -83,6 +84,7 @@ function makeQuestion() {
         if(guess === questions[questionCounter].correctIndex) {
             console.log("correct!");
             $('#answer-status').text("Correct answer!");
+            $('#answer-info').hide();
             clearInterval(timer);
             evaluateGuess();
         } else {
@@ -101,6 +103,8 @@ function evaluateGuess() {
     
     console.log("it works!");
 
+    $('.game-main').hide();
+
     $('#img-row').show();
 
     $('#timer').empty().hide();
@@ -117,6 +121,11 @@ function evaluateGuess() {
 
 //function to call when timer runs out
 function outOfTime() {
+
+    $('#correct-answer').show().text(questions[questionCounter].answers[questions[questionCounter].correctIndex]);
+
+    $('.game-main').hide();
+
     $('#timer').empty().hide();
     $('#guess-text').text("time's up!");
     $('#question, #answers').empty();
