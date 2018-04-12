@@ -25,7 +25,8 @@ body {
 }
 
 .jumbotron {
-    background-color: #e9ecef80;
+    background-color: #68a7e6da;
+    border-radius: 0;
 }
 
 /* =============================================== */
