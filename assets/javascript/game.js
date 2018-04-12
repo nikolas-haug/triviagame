@@ -3,26 +3,44 @@ $('document').ready(function() {
 //question objects
 // TO DO change 'correctIndex' to 'isCorrect' with a boolean value
 var newQuestion1 = {
-    question: "What is the largest living whale in the ocean?",
-    answers: ["this", "that", "then", "there"],
-    correctIndex: 0,
+    question: "The scientific name for the humpback whale, megaptera novaeanglia, means what?",
+    answers: ["Large earth singer",
+              "Large winged New Englander",
+              "Newborn ocean angel",
+              "New winged beaked flyer"
+              ],
+    correctIndex: 1,
     image: "assets/images/whale-hello-there.gif"
 }
 var newQuestion2 = {
-    question: "what?",
-    answers: ["this", "that", "then", "there"],
-    correctIndex: 1,
-    image: "assets/images/halo-beluga-whale.gif"
+    question: "The sperm whale is named after the valuable spermaceti oil found in what part                        its body?",
+    answers: ["Stomach",
+              "Flippers",
+              "Head",
+              "Bones"
+             ],
+    correctIndex: 2,
+    image: "assets/images/sperm-whale-head.gif"
 }
 var newQuestion3 = {
-    question: "where?",
-    answers: ["this", "that", "then", "there"],
-    correctIndex: 2
+    question: "The blue whale’s tongue is approximately the same size as what other animal?",
+    answers: ["An elephant",
+              "A bear",
+              "An alligator",
+              "A tiger"
+             ],
+    correctIndex: 0,
+    image: "assets/images/elephants-walking-road.gif"
 }
 var newQuestion4 = {
-    question: "when?",
-    answers: ["this", "that", "then", "there"],
-    correctIndex: 3
+    question: "Approximately how long can a sperm whale stay underwater on a single breath?",
+    answers: ["7 hours",
+              "2 hours",
+              "10 hours",
+              "24 hours"
+             ],
+    correctIndex: 1,
+    image: "assets/images/sperm-whale-sequence.gif"
 }
 
 //array to hold the question objects
@@ -83,7 +101,7 @@ function makeQuestion() {
         $('#img-row').hide();
         $('#results').hide();
         //remove img attribute
-        $('img').removeAttr('src');
+        $('#variable-img').removeAttr('src');
         $('#status-text, #correct-answer').text("");
         $('#main-start').show();
         $('#question').text(questions[questionCounter].question);
@@ -128,7 +146,7 @@ function evaluateGuess() {
     $('#timer').empty().hide();
 
     // var answerImg = $('<img>');
-    $('img').attr('src', questions[questionCounter].image);
+    $('#variable-img').attr('src', questions[questionCounter].image);
     console.log(questions[questionCounter].image);
     // $('#answer-img').append(answerImg);
 
@@ -142,7 +160,7 @@ function evaluateGuess() {
 //function to call when timer runs out
 function outOfTime() {
     $('#correct-answer').show().text(questions[questionCounter].answers[questions[questionCounter].correctIndex]);
-    $('img').attr('src', questions[questionCounter].image);
+    $('#variable-img').attr('src', questions[questionCounter].image);
     $('.game-main').hide();
     $('#timer').empty().hide();
     $('#status-text').text("time's up!");
