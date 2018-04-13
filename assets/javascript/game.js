@@ -131,7 +131,7 @@ var questions = [newQuestion1, newQuestion2, newQuestion3, newQuestion4, newQues
 var questionCounter = 0;
 
 //variable for the timer
-var timeLeft = 10;
+var timeLeft = 30;
 
 //variable for the set timer interval
 var timer;
@@ -231,11 +231,11 @@ function evaluateGuess() {
     console.log(questions[questionCounter].image);
     // $('#answer-img').append(answerImg);
 
-    setTimeout(makeQuestion, 3000);
+    setTimeout(makeQuestion, 7000);
     
     $('#question, #answers').empty();
     questionCounter++;
-    timeLeft = 10;
+    timeLeft = 30;
 };
 
 //function to call when timer runs out
@@ -250,8 +250,8 @@ function outOfTime() {
     $('#img-row').show();
     unAnswered++;
     questionCounter++;
-    timeLeft = 10;
-    setTimeout(makeQuestion, 3000);
+    timeLeft = 30;
+    setTimeout(makeQuestion, 7000);
 }
 
 //function to check game status
