@@ -1,7 +1,7 @@
 $('document').ready(function() {
 
 //question objects
-// TO DO change 'correctIndex' to 'isCorrect' with a boolean value
+// TO DO put all objects into a single array or separate file
 var newQuestion1 = {
     question: "The scientific name for the humpback whale, megaptera novaeanglia, means what?",
     answers: [
@@ -125,6 +125,7 @@ var newQuestion11 = {
 }
 
 //array to hold the question objects
+// TO DO simplify this with a single array of objects or loop with numbers/variables
 var questions = [newQuestion1, newQuestion2, newQuestion3, newQuestion4, newQuestion5, newQuestion6, newQuestion7, newQuestion8, newQuestion9, newQuestion10, newQuestion11];
 
 //variable to keep track of question
@@ -150,9 +151,7 @@ var gameOver = false;
 
 //function to initialize the game on page load
 function startGame() {
-    $('.game-main, #retry-btn').hide();
-    $('#main-start, #results').hide();
-    $('#img-row').hide();
+    $('.game-main, #retry-btn, #main-start, #results, #img-row').hide();
     $('#start-btn').show().on('click', makeQuestion);
 }
 
@@ -160,7 +159,7 @@ function startGame() {
 function startTimer() {
     //add checktimer
     if(timeLeft === 0) {
-        console.log("time's up!");
+        // console.log("time's up!");
         clearInterval(timer);
         // evaluateGuess();
         outOfTime();
@@ -176,11 +175,8 @@ function makeQuestion() {
     gameStatus();
     //check the status of the game
     if(gameOver === false) {
-
         $('#timer, .game-main, #answer-info').show();
-        $('#start-btn, #retry-btn').hide();
-        $('#img-row').hide();
-        $('#results').hide();
+        $('#start-btn, #retry-btn, #img-row, #results').hide();
         //remove img attribute
         $('#variable-img').removeAttr('src');
         $('#status-text, #correct-answer').text("");
@@ -189,7 +185,7 @@ function makeQuestion() {
         for(var i = 0; i < questions[questionCounter].answers.length; i++) {
             var newAnswers = $("<li data-choice=" + i + ">");
             newAnswers.append(questions[questionCounter].answers[i]);
-            console.log(newAnswers);
+            // console.log(newAnswers);
             $('#answers').append(newAnswers);
         }
         timer = setInterval(startTimer, 1000);
@@ -201,16 +197,16 @@ function makeQuestion() {
     //event listenr added onced (bound) to the dynamically generated DOM elements
     $('#answers').on('click', 'li', function() {
         var guess = ($(this).data('choice'));
-        console.log(guess);
+        // console.log(guess);
         if(guess === questions[questionCounter].correctIndex) {
-            console.log("correct!");
+            // console.log("correct!");
             correctAnswers++;
             $('#answer-status').text("Correct answer!");
             $('#answer-info').hide();
             clearInterval(timer);
             evaluateGuess();
         } else {
-            console.log("wrong!");
+            // console.log("wrong!");
             wrongAnswers++;
             $('#answer-status').text("Wrong answer!");
             $('#correct-answer').show().text(questions[questionCounter].answers[questions[questionCounter].correctIndex]);
@@ -225,14 +221,9 @@ function evaluateGuess() {
     $('.game-main').hide();
     $('#img-row').show();
     $('#timer').empty().hide();
-
-    // var answerImg = $('<img>');
     $('#variable-img').attr('src', questions[questionCounter].image);
-    console.log(questions[questionCounter].image);
-    // $('#answer-img').append(answerImg);
-
+    // console.log(questions[questionCounter].image);
     setTimeout(makeQuestion, 7000);
-    
     $('#question, #answers').empty();
     questionCounter++;
     timeLeft = 30;
@@ -270,9 +261,9 @@ function endGame() {
     $('#right').text("Correct answers: " + correctAnswers);
     $('#wrong').text("Wrong answers: " + wrongAnswers);
     $('#unanswered').text("Not answered: " + unAnswered);
-    $('.game-main').hide();
-    $('#main-start').hide();
-    $('#img-row').hide();
+    $('.game-main, #main-start, #img-row').hide();
+    // $('#main-start').hide();
+    // $('#img-row').hide();
     $('#status-text').text("");
     $('#retry-btn').show().off().on('click', makeQuestion);
     
