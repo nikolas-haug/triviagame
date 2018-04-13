@@ -4,7 +4,8 @@ $('document').ready(function() {
 // TO DO change 'correctIndex' to 'isCorrect' with a boolean value
 var newQuestion1 = {
     question: "The scientific name for the humpback whale, megaptera novaeanglia, means what?",
-    answers: ["Large earth singer",
+    answers: [
+              "Large earth singer",
               "Large winged New Englander",
               "Newborn ocean angel",
               "New winged beaked flyer"
@@ -14,7 +15,8 @@ var newQuestion1 = {
 }
 var newQuestion2 = {
     question: "The sperm whale is named after the valuable spermaceti oil found in what part                        its body?",
-    answers: ["Stomach",
+    answers: [
+              "Stomach",
               "Flippers",
               "Head",
               "Bones"
@@ -24,7 +26,8 @@ var newQuestion2 = {
 }
 var newQuestion3 = {
     question: "The blue whale’s tongue is approximately the same size as what other animal?",
-    answers: ["An elephant",
+    answers: [
+              "An elephant",
               "A bear",
               "An alligator",
               "A tiger"
@@ -34,7 +37,8 @@ var newQuestion3 = {
 }
 var newQuestion4 = {
     question: "Approximately how long can a sperm whale stay underwater on a single breath?",
-    answers: ["7 hours",
+    answers: [
+              "7 hours",
               "2 hours",
               "10 hours",
               "24 hours"
@@ -42,9 +46,86 @@ var newQuestion4 = {
     correctIndex: 1,
     image: "assets/images/sperm-whale-sequence.gif"
 }
+var newQuestion5 = {
+    question: "What is the method of feeding used by humpback whales that allows them to round up highly            concentrated masses of prey?",
+    answers: [
+             "Surface mouth feeding",
+             "Deep-water feeding",
+             "Skim feeding",
+             "Bubble-net feeding"
+             ],
+    correctIndex: 3,
+    image: "assets/images/humpback-feeding.gif"
+}
+var newQuestion6 = {
+    question: "What is the average length in feet of an adult blue whale?",
+    answers: [
+             "150ft",
+             "85ft",
+             "60ft",
+             "100ft"
+             ],
+    correctIndex: 1,
+    image: "assets/images/blue-whale-spinning.gif"
+}
+var newQuestion7 = {
+    question: "Which of the following is a characteristic of all baleen whales?",
+    answers: [
+             "2 blowholes",
+             "Females are larger",
+             "Seasonal feeders",
+             "All of the above"
+             ],
+    correctIndex: 3,
+    image: "assets/images/humpback-nose.gif"
+}
+var newQuestion8 = {
+    question: "What animal has the largest brain?",
+    answers: [
+             "Orca",
+             "Blue whale",
+             "Sperm whale",
+             "Grey whale"
+             ],
+    correctIndex: 2,
+    image: "assets/images/spinning-sperm-whale.gif"
+}
+var newQuestion9 = {
+    question: "Which of the following foods are most eaten by sperm whales?",
+    answers: [
+             "Giant squid",
+             "Blue shark",
+             "Giant sting ray",
+             "Yellow fin tuna"
+             ],
+    correctIndex: 0,
+    image: "assets/images/giant-squid-sperm-whale.gif"
+}
+var newQuestion10 = {
+    question: "Which of the following body parts does the beluga whale not have?",
+    answers: [
+             "Blowhole",
+             "Fins",
+             "Flippers",
+             "Beak"
+             ],
+    correctIndex: 1,
+    image: "assets/images/halo-beluga-whale.gif"
+}
+var newQuestion11 = {
+    question: "The average life expectancy of a sperm whale is approximately how many years?",
+    answers: [
+             "200 years",
+             "70 years",
+             "50 years",
+             "100 years"
+             ],
+    correctIndex: 1,
+    image: "assets/images/whale-flukes.gif"
+}
 
 //array to hold the question objects
-var questions = [newQuestion1, newQuestion2, newQuestion3, newQuestion4];
+var questions = [newQuestion1, newQuestion2, newQuestion3, newQuestion4, newQuestion5, newQuestion6, newQuestion7, newQuestion8, newQuestion9, newQuestion10, newQuestion11];
 
 //variable to keep track of question
 var questionCounter = 0;
